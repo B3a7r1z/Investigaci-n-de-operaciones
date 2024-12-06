@@ -1,0 +1,69 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solucionador de Problemas de Transporte</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Solucionador de Problemas de Transporte</h1>
+        
+        <div class="input-section">
+            <h2>Configuración del Problema</h2>
+            
+            <div class="dimensions-input">
+                <label for="sources">Número de Orígenes:</label>
+                <input type="number" id="sources" min="1" value="2">
+                
+                <label for="destinations">Número de Destinos:</label>
+                <input type="number" id="destinations" min="1" value="2">
+                
+                <button onclick="generateTable()">Generar Tabla</button>
+            </div>
+
+            <div id="problem-input" class="problem-input">
+                <div class="costs-section">
+                    <h3>Costos de Transporte</h3>
+                    <table id="costs-table"></table>
+                </div>
+                
+                <div class="constraints-section">
+                    <div class="supply-section">
+                        <h3>Oferta</h3>
+                        <table id="supply-table"></table>
+                    </div>
+                    
+                    <div class="demand-section">
+                        <h3>Demanda</h3>
+                        <table id="demand-table"></table>
+                        <button onclick="solveProblem()" class="solve-button">Resolver</button>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+
+        <div id="results" class="results-section" style="display: none;">
+            <h2>Resultados</h2>
+            
+            <div class="method-results">
+                <h3>Método de Aproximación de Vogel</h3>
+                <table id="vogel-solution"></table>
+                <p>Costo Total: <span id="vogel-cost"></span></p>
+            </div>
+            
+            <div class="method-results">
+                <h3>Método de Costo Mínimo</h3>
+                <table id="min-cost-solution"></table>
+                <p>Costo Total: <span id="min-cost-cost"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
